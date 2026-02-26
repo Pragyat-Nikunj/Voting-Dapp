@@ -1,10 +1,7 @@
 
 #  VoteLab: Decentralized Governance Engine
-
-[![Smart Contract](https://img.shields.io/badge/Solidity-0.8.18-363636?style=flat-square&logo=solidity)](https://soliditylang.org/)
-[![Frontend](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![Testing](https://img.shields.io/badge/Vitest-Passed-646cff?style=flat-square&logo=vitest)](https://vitest.dev/)
-[![Security](https://img.shields.io/badge/Foundry-Tested-ff3e00?style=flat-square&logo=foundry)](https://book.getfoundry.sh/)
+[![Frontend](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Testing](https://img.shields.io/badge/Vitest-646cff?style=flat-square&logo=vitest)](https://vitest.dev/)
 
 A professional-grade decentralized voting application (DApp) featuring a three-stage state machine, automated winner determination, and a secure administrative sweep mechanism. Built with a focus on **Type Safety**, **On-Chain Security**, and **Test-Driven Development**.
 
