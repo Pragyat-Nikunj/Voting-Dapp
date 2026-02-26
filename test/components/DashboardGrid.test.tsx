@@ -1,15 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { DashboardGrid } from '@/components/DashboardGrid';
 import { useMemberVote } from '@/hooks/useMemberVote';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, type Mock } from 'vitest';
+
+const mockedUseMemberVote = useMemberVote as Mock;
 
 vi.mock('@/hooks/useMemberVote', () => ({
   useMemberVote: vi.fn(),
 }));
 
 describe('DashboardGrid Workflow', () => {
- it('renders the Winner Screen when in the RESETTING phase', () => {
-    (useMemberVote as any).mockReturnValue({
+  it('renders the Winner Screen when in the RESETTING phase', () => {
+    mockedUseMemberVote.mockReturnValue({
       workflowStation: 2, 
       optionAVotes: 10,
       optionBVotes: 5,
@@ -26,7 +28,7 @@ describe('DashboardGrid Workflow', () => {
   });
 
   it('renders the Voting Cards when in the VOTING phase', () => {
-    (useMemberVote as any).mockReturnValue({
+    mockedUseMemberVote.mockReturnValue({
       workflowStation: 1, 
       optionAVotes: 0,
       optionBVotes: 0,

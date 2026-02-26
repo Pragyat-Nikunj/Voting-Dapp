@@ -39,7 +39,7 @@ const FadeContent: React.FC<FadeContentProps> = ({
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-
+   
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -97,6 +97,7 @@ const FadeContent: React.FC<FadeContentProps> = ({
       tl.kill();
       gsap.killTweensOf(el);
     };
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,7 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { DashboardGrid } from '@/components/DashboardGrid';
 import { useMemberVote } from '@/hooks/useMemberVote';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, type Mock } from 'vitest';
+
+const mockedUseMemberVote = useMemberVote as Mock;
 
 vi.mock('@/hooks/useMemberVote', () => ({
   useMemberVote: vi.fn(),
@@ -11,7 +13,7 @@ describe('DashboardGrid Interactions', () => {
   it('calls castVote when the Sweet Banana button is clicked', () => {
     const mockCastVote = vi.fn();
 
-    (useMemberVote as any).mockReturnValue({
+    mockedUseMemberVote.mockReturnValue({
       workflowStation: 1, 
       optionAVotes: 0,
       optionBVotes: 0,

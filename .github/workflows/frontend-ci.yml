@@ -1,0 +1,44 @@
+name: Frontend CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    name: 🏗️ Build, Lint & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        # npm ci is faster and more reliable for CI environments than npm install
+        run: npm ci
+
+      - name: Linting Check
+        run: npm run lint
+
+      - name:  Execute Vitest Suite
+        run: npm run test
+
+      - name:  Production Build Check
+        run: npm run build
+
+  notify-status:
+    needs: build-and-test
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📢 Summary
+        run: |
+          echo "CI Pipeline finished with status: ${{ needs.build-and-test.result }}"

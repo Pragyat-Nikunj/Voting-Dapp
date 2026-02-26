@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { AdminPanel } from '@/components/AdminPanel';
 import { useMemberVote } from '@/hooks/useMemberVote';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, type Mock } from 'vitest';
+
+const mockedUseMemberVote = useMemberVote as Mock;
 
 vi.mock('@/hooks/useMemberVote', () => ({
   useMemberVote: vi.fn(),
@@ -9,7 +11,7 @@ vi.mock('@/hooks/useMemberVote', () => ({
 
 describe('AdminPanel Visibility', () => {
   it('should return null if the user is NOT the owner', () => {
-    (useMemberVote as any).mockReturnValue({
+    mockedUseMemberVote.mockReturnValue({
       isOwner: false,
       workflowStation: 1,
     });
@@ -19,14 +21,13 @@ describe('AdminPanel Visibility', () => {
   });
 
   it('should show Admin Console if the user IS the owner', () => {
-    (useMemberVote as any).mockReturnValue({
+    mockedUseMemberVote.mockReturnValue({
       isOwner: true,
       workflowStation: 1,
       prizePool: '0',
     });
 
     render(<AdminPanel />);
-    
     expect(screen.getByText(/Admin Console/i)).toBeInTheDocument();
   });
 });
