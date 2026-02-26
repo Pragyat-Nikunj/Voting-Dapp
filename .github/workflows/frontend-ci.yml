@@ -33,7 +33,7 @@ jobs:
       - name:  Production Build Check
         env:
           # This maps the GitHub Secret to the Next.js environment variable
-          NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets. NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID }}
+          NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets. WALLETCONNECT_PROJECT_ID }}
         run: npm run build
 
   notify-status:
