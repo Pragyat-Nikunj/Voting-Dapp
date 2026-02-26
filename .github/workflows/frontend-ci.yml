@@ -22,7 +22,6 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        # npm ci is faster and more reliable for CI environments than npm install
         run: npm install
 
       - name: Linting Check
@@ -32,6 +31,9 @@ jobs:
         run: npm run test
 
       - name:  Production Build Check
+        env:
+          # This maps the GitHub Secret to the Next.js environment variable
+          NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets. NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID }}
         run: npm run build
 
   notify-status:
