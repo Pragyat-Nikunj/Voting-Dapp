@@ -5,7 +5,10 @@
 
 A professional-grade decentralized voting application (DApp) featuring a three-stage state machine, automated winner determination, and a secure administrative sweep mechanism. Built with a focus on **Type Safety**, **On-Chain Security**, and **Test-Driven Development**.
 
+- **Smart Contract**: [VoteLab Contract](https://github.com/Pragyat-Nikunj/Smart-Voting-Contract)
+
 ---
+
 
 ## 📖 Table of Contents
 - [Project Overview](#project-overview)
