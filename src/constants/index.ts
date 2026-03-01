@@ -1,4 +1,4 @@
-export const ContractAddress = "0xf74da0832C46F40D6d77B6f5A38941AFB0c90E5A";
+export const ContractAddress = "0x6A71C004F1E51Cbe7B95f7E63EC1320DDd635712";
 
 export const ABI =  [
         {
